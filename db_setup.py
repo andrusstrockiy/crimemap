@@ -13,7 +13,7 @@ try:
         sql = 'create table if not exists crimemap.crimes(' \
               'id int not null auto_increment,' \
               'latitude float(10,6),' \
-              'longtitude float(10,6),' \
+              'longitude float(10,6),' \
               'date datetime,' \
               'category varchar(50),' \
               'description varchar(100),' \
