@@ -32,7 +32,7 @@ def add():
         print(e)
     return home()
 
-@app.route('/submitecrime',methods=['POST'])
+@app.route('/submitcrime',methods=['POST'])
 def submitecrime():
     category = request.form.get("category")
     date = request.form.get("date")
