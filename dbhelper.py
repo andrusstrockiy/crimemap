@@ -23,7 +23,7 @@ class DBHelper:
         finally:
             connection.close()
 
-    def add_input(self,data):
+    def add_input(self, data):
         connection = self.connect()
         try:
             query = "INSERT INTO crimes (description) VALUES (%s);".format(data)
@@ -31,7 +31,7 @@ class DBHelper:
                 cursor.execute(query)
                 connection.commit()
         finally:
-             connection.close()
+            connection.close()
 
     def clear_all(self):
         connection = self.connect()
@@ -51,7 +51,7 @@ class DBHelper:
             VALUES( % s, % s, % s, % s, % s)"
             with connection.cursor() as cursor:
                 cursor.execute(query, (category, date, latitude, longitude,
-                               description))
+                                       description))
                 connection.commit()
         except Exception as e:
             print(e)
@@ -63,7 +63,7 @@ class DBHelper:
         try:
             query = "SELECT latitude, longitude, date, category, description FROM  crimes; "
             with connection.cursor() as cursor:
-                cursor.executr(query)
+                cursor.execute(query)
             named_crimes = []
             for crime in cursor:
                 named_crime = {
@@ -72,9 +72,8 @@ class DBHelper:
                     'date': datetime.datetime.strftime(crime[2], '%Y-%m-%d'),
                     'category': crime[3],
                     'description': crime[4]
-                    }
+                }
                 named_crimes.append(named_crime)
             return named_crimes
         finally:
             connection.close()
-
